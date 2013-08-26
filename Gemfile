@@ -3,8 +3,8 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.14'
 
 group :development, :test do
-  gem 'sqlite3'
-  gem 'rspec-rails', '2.13.1'
+  gem 'rspec-rails'
+  gem 'pry-debugger'
 end
 
 group :production do
@@ -19,6 +19,17 @@ group :assets do
   gem 'less-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'twitter-bootstrap-rails'
+end
+
+group :development do
+  gem 'growl'
+  gem 'thin'
+end
+
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'guard-rspec'
 end
 
 gem 'jquery-rails'

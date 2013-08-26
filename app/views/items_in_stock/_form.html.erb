@@ -1,0 +1,19 @@
+<%= form_for [@subject, @item_in_stock], :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label 'Item', :class => 'control-label' %>
+    <div class="controls">
+      <%= f.select :item_id, options_from_collection_for_select(Item.all, :id, :name_and_info) %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :in_stock, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :in_stock, :class => 'number_field' %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), subject_items_in_stock_path, :class => 'btn' %>
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+  </div>
+<% end %>

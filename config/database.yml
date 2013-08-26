@@ -7,7 +7,9 @@ development:
   password:
 
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: chs_inventory_test
   pool: 5
-  timeout: 5000
+  username: <%= `whoami` %>
+  password:
