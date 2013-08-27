@@ -1,0 +1,11 @@
+ap_bio:
+  name: AP Biology
+
+bio:
+  name: Regular Biologoy
+
+ap_chem:
+  name: AP Chemistry
+
+chem:
+  name: Chemistry

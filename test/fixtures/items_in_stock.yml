@@ -1,0 +1,19 @@
+ap_bio_flasks:
+  item: flask
+  subject: ap_bio
+  in_stock: 20
+
+ap_bio_beakers:
+  item: beaker
+  subject: ap_bio
+  in_stock: 35
+
+bio_flasks:
+  item: flask
+  subject: bio
+  in_stock: 10
+
+chem_beakers:
+  item: beaker
+  subject: bio
+  in_stock: 7
