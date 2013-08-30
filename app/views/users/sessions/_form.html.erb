@@ -1,18 +1,18 @@
-<%= form_tag url: '/users/sign_in', method: 'POST', :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for :user, url: '/users/sign_in', method: 'POST', :html => { :class => 'form-horizontal' } do |f| %>
   <div class="control-group">
-    <%= label_tag :signup, 'Email', :class => 'control-label' %>
+    <%= f.label :email, 'Email', :class => 'control-label' %>
     <div class="controls">
-      <%= text_field_tag :signup, nil, :class => 'text_field' %>
+      <%= f.text_field :email, :class => 'text_field' %>
     </div>
   </div>
   <div class="control-group">
-    <%= label_tag :signup, 'Password', :class => 'control-label' %>
+    <%= f.label :password, 'Password', :class => 'control-label' %>
     <div class="controls">
-      <%= password_field_tag :signup, nil, :class => 'password' %>
+        <%= f.password_field :password, :class => 'password' %>
     </div>
   </div>
   <div class="form-actions">
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), items_path, :class => 'btn' %>
-    <%= submit_tag nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), root_path, :class => 'btn' %>
+    <%= f.submit 'Sign In', :class => 'btn btn-primary' %>
   </div>
 <% end %>
