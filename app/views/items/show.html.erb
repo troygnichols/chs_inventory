@@ -3,23 +3,45 @@
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @item.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:size) %>:</strong></dt>
-  <dd><%= @item.size %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:units) %>:</strong></dt>
-  <dd><%= @item.units %></dd>
-</dl>
-
+<div class="row">
+  <div class="span6">
+    <dl class="dl-horizontal">
+      <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+      <dd><%= @item.name %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:size) %>:</strong></dt>
+      <dd><%= @item.size %></dd>
+      <dt><strong><%= model_class.human_attribute_name(:units) %>:</strong></dt>
+      <dd><%= @item.units %></dd>
+    </dl>
+  </div>
+  <div class="span6">
+    <h3>Locations</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th class="subject">Subject</th>
+          <th class="quantity">Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @item.items_in_stock.each do |item_in_stock| %>
+          <tr>
+            <td><%= link_to item_in_stock.subject.name, item_in_stock.subject %></td>
+            <td><%= item_in_stock.quantity %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 <div class="form-actions">
   <%= link_to t('.back', :default => t("helpers.links.back")),
-              items_path, :class => 'btn'  %>
+    items_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_item_path(@item), :class => 'btn' %>
+    edit_item_path(@item), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              item_path(@item),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+    item_path(@item),
+    :method => 'delete',
+    :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+    :class => 'btn btn-danger' %>
 </div>
