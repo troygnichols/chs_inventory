@@ -15,7 +15,7 @@
     </dl>
   </div>
   <div class="span6">
-    <h3>Subjects</h3>
+    <h3>Locations</h3>
     <table class="table table-striped">
       <thead>
         <tr>
@@ -24,11 +24,10 @@
         </tr>
       </thead>
       <tbody>
-        <% ItemInStock.where(item_id: @item.id).each do |x| %>
-          <%= subject = Subject.find_by_id(x.subject_id) %>
+        <% @item.items_in_stock.each do |item_in_stock| %>
           <tr>
-            <td><%= link_to subject.name, subject %></td>
-            <td><%= x.quantity %></td>
+            <td><%= link_to item_in_stock.subject.name, item_in_stock.subject %></td>
+            <td><%= item_in_stock.quantity %></td>
           </tr>
         <% end %>
       </tbody>
