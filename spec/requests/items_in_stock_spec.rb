@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "ItemInStocks" do
   before(:all) do
-    @subject = FactoryGirl.create :subject
+    @subject = FactoryGirl.create :subject, name: 'Something New'
   end
 
   describe "GET /items_in_stock" do

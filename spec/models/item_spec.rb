@@ -10,7 +10,7 @@ describe Item do
   it 'destroys related ItemsInStock when destroyed' do
     item = FactoryGirl.create :item
     subject = FactoryGirl.create :subject
-    FactoryGirl.create :item_in_stock, subject_id: subject.id, item_id: item.id, in_stock: 42
+    FactoryGirl.create :item_in_stock, subject_id: subject.id, item_id: item.id, quantity: 42
     assert_no_difference 'Subject.count' do
       assert_difference 'ItemInStock.count', -1 do
         assert_difference 'Item.count', -1 do
