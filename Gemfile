@@ -6,6 +6,7 @@ gem 'devise'
 group :development, :test do
   gem 'rspec-rails'
   gem 'pry-debugger'
+  gem 'faker'
 end
 
 group :production do
@@ -27,7 +28,7 @@ group :development do
   gem 'thin'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'meta_request'  
+  gem 'meta_request'
 end
 
 group :test do
