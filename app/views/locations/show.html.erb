@@ -1,0 +1,19 @@
+<%- model_class = Location -%>
+<div class="page-header">
+  <h1><%= t '.title', default: @location.name %></h1>
+  <blockquote>
+    <p><%= @location.description %></p>
+  </blockquote>
+</div>
+
+<h2>Items in stock</h2>
+<% if @location.items_in_stock.any? %>
+  <%= render partial: 'items_in_stock' %>
+<% else %>
+  <em>No items in stock</em>
+<% end %>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")), locations_path, :class => 'btn' %>
+  <%= link_to 'Add Item', new_location_item_in_stock_path(@location), class: 'btn btn-primary' %>
+</div>

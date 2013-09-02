@@ -7,15 +7,15 @@
     </tr>
   </thead>
   <tbody>
-    <% @subject.items_in_stock.each do |item_in_stock| %>
+    <% @location.items_in_stock.each do |item_in_stock| %>
       <tr>
         <td><%= link_to item_in_stock.name, item_in_stock.item %></td>
         <td><%= item_in_stock.quantity %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_subject_item_in_stock_path(@subject, item_in_stock), :class => 'btn btn-mini' %>
+                      edit_location_item_in_stock_path(@location, item_in_stock), :class => 'btn btn-mini' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      subject_item_in_stock_path(@subject, item_in_stock),
+                      location_item_in_stock_path(@location, item_in_stock),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
