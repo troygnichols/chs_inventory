@@ -2,32 +2,24 @@ require "spec_helper"
 
 describe ItemsInStockController do
   describe "routing" do
-    it "routes to #index" do
-      get("subjects/10/items_in_stock").should route_to("items_in_stock#index", subject_id: "10")
-    end
-
     it "routes to #new" do
-      get("subjects/10/items_in_stock/new").should route_to("items_in_stock#new", subject_id: "10")
-    end
-
-    it "routes to #show" do
-      get("subjects/10/items_in_stock/1").should route_to("items_in_stock#show", subject_id: "10", id: "1")
+      get("locations/10/items_in_stock/new").should route_to("items_in_stock#new", location_id: "10")
     end
 
     it "routes to #edit" do
-      get("subjects/10/items_in_stock/1/edit").should route_to("items_in_stock#edit", subject_id: "10", id: "1")
+      get("locations/10/items_in_stock/1/edit").should route_to("items_in_stock#edit", location_id: "10", id: "1")
     end
 
     it "routes to #create" do
-      post("subjects/10/items_in_stock").should route_to("items_in_stock#create", subject_id: "10")
+      post("locations/10/items_in_stock").should route_to("items_in_stock#create", location_id: "10")
     end
 
     it "routes to #update" do
-      put("subjects/10/items_in_stock/1").should route_to("items_in_stock#update", subject_id: "10", id: "1")
+      put("locations/10/items_in_stock/1").should route_to("items_in_stock#update", location_id: "10", id: "1")
     end
 
     it "routes to #destroy" do
-      delete("subjects/10/items_in_stock/1").should route_to("items_in_stock#destroy", subject_id: "10", id: "1")
+      delete("locations/10/items_in_stock/1").should route_to("items_in_stock#destroy", location_id: "10", id: "1")
     end
   end
 end

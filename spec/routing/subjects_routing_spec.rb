@@ -1,34 +1,34 @@
 require "spec_helper"
 
-describe SubjectsController do
+describe LocationsController do
   describe "routing" do
 
     it "routes to #index" do
-      get("/subjects").should route_to("subjects#index")
+      get("/locations").should route_to("locations#index")
     end
 
     it "routes to #new" do
-      get("/subjects/new").should route_to("subjects#new")
+      get("/locations/new").should route_to("locations#new")
     end
 
     it "routes to #show" do
-      get("/subjects/1").should route_to("subjects#show", :id => "1")
+      get("/locations/1").should route_to("locations#show", :id => "1")
     end
 
     it "routes to #edit" do
-      get("/subjects/1/edit").should route_to("subjects#edit", :id => "1")
+      get("/locations/1/edit").should route_to("locations#edit", :id => "1")
     end
 
     it "routes to #create" do
-      post("/subjects").should route_to("subjects#create")
+      post("/locations").should route_to("locations#create")
     end
 
     it "routes to #update" do
-      put("/subjects/1").should route_to("subjects#update", :id => "1")
+      put("/locations/1").should route_to("locations#update", :id => "1")
     end
 
     it "routes to #destroy" do
-      delete("/subjects/1").should route_to("subjects#destroy", :id => "1")
+      delete("/locations/1").should route_to("locations#destroy", :id => "1")
     end
 
   end

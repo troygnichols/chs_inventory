@@ -1,21 +1,21 @@
-<h1>Subjects</h1>
+<h1>Locations</h1>
 
-<table class="subjects table table-striped">
+<table class="locations table table-striped">
   <tr>
     <th class="name">Name</th>
     <th class="desc">Description</th>
     <th>Actions</th>
   </tr>
 
-<% @subjects.each do |subject| %>
+<% @locations.each do |location| %>
   <tr>
-    <td><%= link_to subject.name, subject %></td>
-    <td><%= truncate subject.description %>
+    <td><%= link_to location.name, location %></td>
+    <td><%= truncate location.description %>
     <td>
       <%= link_to t('.edit', :default => t("helpers.links.edit")),
-        edit_subject_path(subject), :class => 'btn btn-mini' %>
+        edit_location_path(location), :class => 'btn btn-mini' %>
       <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-          subject_path(subject),
+          location_path(location),
           :method => :delete,
           :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
           :class => 'btn btn-mini btn-danger' %>
@@ -25,4 +25,4 @@
 </table>
 
 <br />
-<%= link_to 'New Subject', new_subject_path, class: 'btn btn-primary' %>
+<%= link_to 'New Location', new_location_path, class: 'btn btn-primary' %>

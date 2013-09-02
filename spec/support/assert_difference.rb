@@ -1,13 +1,15 @@
-def assert_difference(executable, how_many = 1, &block)
-  before = eval(executable)
+def assert_difference(expression, difference = 1, message = nil, &block)
+  expressions = Array(expression)
+  exps = expressions.map { |e| e.respond_to?(:call) ? e : lambda { eval(e, block.binding) }}
+  before = exps.map { |e| e.call }
   yield
-  after = eval(executable)
-  after.should == before + how_many
+  expressions.zip(exps).each_with_index do |(code, e), i|
+    error = "#{code.inspect} didn't change by #{difference}"
+    error = "#{message}.\n#{error}" if message
+    assert_equal(before[i] + difference, e.call, error)
+  end
 end
 
-def assert_no_difference(executable, &block)
-  before = eval(executable)
-  yield
-  after = eval(executable)
-  after.should == before
+def assert_no_difference(expression, message = nil, &block)
+  assert_difference expression, 0, message, &block
 end
