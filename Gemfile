@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
 gem 'devise'
+gem 'thin'
 
 group :development, :test do
   gem 'rspec-rails'
@@ -25,7 +26,6 @@ end
 
 group :development do
   gem 'growl'
-  gem 'thin'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
