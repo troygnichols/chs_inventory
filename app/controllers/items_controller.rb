@@ -33,12 +33,17 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(params[:item])
 
+    # This is a really crappy way of enforcing that the tag gets assigned to
+    # the first element of a list.
+    @item.tags = Array.new(1) { Tag.find_by_name(params[:tag_name].first) || Tag.create(name: params[:tag_name].first) }
+
     respond_to do |format|
       if @item.save
         flash[:success] = "Created #{@item.name}."
         format.html { redirect_to action: 'index' }
         format.json { render json: @item, status: :created, location: @item }
       else
+        flash[:error] = "Cannot create #{@item.name}."
         format.html { render action: "new" }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end

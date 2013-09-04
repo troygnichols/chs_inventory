@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130901180515) do
+ActiveRecord::Schema.define(:version => 20130903005710) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(:version => 20130901180515) do
   create_table "locations", :force => true do |t|
     t.string "name",        :null => false
     t.text   "description"
+  end
+
+  create_table "tagged_entities", :force => true do |t|
+    t.integer "tag_id",      :null => false
+    t.integer "entity_id",   :null => false
+    t.string  "entity_type", :null => false
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string "name", :null => false
   end
 
   create_table "users", :force => true do |t|
