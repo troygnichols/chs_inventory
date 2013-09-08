@@ -31,11 +31,10 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(params[:item])
-
-    # This is a really crappy way of enforcing that the tag gets assigned to
-    # the first element of a list.
-    @item.tags = Array.new(1) { Tag.find_by_name(params[:tag_name].first) || Tag.create(name: params[:tag_name].first) }
+    Item.transaction do
+      @item = Item.new(params[:item])
+      @item.tags = [find_or_create_tag(params[:tag][:name])]
+    end
 
     respond_to do |format|
       if @item.save
@@ -51,7 +50,10 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
+    Item.transaction do
+      @item = Item.find(params[:id])
+      @item.tags = [find_or_create_tag(params[:tag][:name])]
+    end
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
@@ -73,5 +75,11 @@ class ItemsController < ApplicationController
       format.html { redirect_to items_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def find_or_create_tag(name)
+    Tag.find_by_name(name) || Tag.create(name: name) 
   end
 end

@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: items
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  size       :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  units      :string(255)
+#
+
 class Item < ActiveRecord::Base
   validate :only_one_tag
   attr_accessible :name, :size, :units

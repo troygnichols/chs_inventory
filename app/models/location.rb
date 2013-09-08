@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: locations
+#
+#  id          :integer          not null, primary key
+#  name        :string(255)      not null
+#  description :text
+#
+
 class Location < ActiveRecord::Base
   attr_accessible :name, :description
   validates :name, presence: true, uniqueness: { case_sensitive: false }
