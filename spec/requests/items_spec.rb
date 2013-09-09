@@ -73,7 +73,7 @@ describe "Items" do
     end
 
     describe "PUT /items/:id" do
-      it "should update and redirect to item show page" do
+      it "should update and redirect to items index page" do
         put item_path(@item), item: { size: '1000' }, tag: { name: @tag_name }
         response.should redirect_to items_path
         assigns(:item).reload.size.should eq('1000')
@@ -81,7 +81,7 @@ describe "Items" do
     end
 
     describe "DELETE /items/:id" do
-      it "should delete and redirect to item show page" do
+      it "should delete and redirect to items index page" do
         item = create :item
         delete item_path(item)
         response.should redirect_to items_path

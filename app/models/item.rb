@@ -34,6 +34,6 @@ class Item < ActiveRecord::Base
   end
 
   def only_one_tag
-    errors[:tags] << "There can only be one tag!" if tags.count > 1
+    errors[:tags] << "There can only be one category!" if tags.count > 1
   end
 end
