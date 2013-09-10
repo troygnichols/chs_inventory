@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
   def create
     Item.transaction do
       @item = Item.new(params[:item])
-      @item.tags = [find_or_create_tag(params[:tag][:name])]
+      @item.tags = [find_or_create_tag(params[:tag][:name])] unless params[:tag][:name].blank?
     end
 
     respond_to do |format|
