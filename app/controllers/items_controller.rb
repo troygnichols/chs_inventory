@@ -31,7 +31,10 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(params[:item])
+    Item.transaction do
+      @item = Item.new(params[:item])
+      @item.tags = [find_or_create_tag(params[:tag][:name])] unless params[:tag][:name].blank?
+    end
 
     respond_to do |format|
       if @item.save
@@ -39,6 +42,7 @@ class ItemsController < ApplicationController
         format.html { redirect_to action: 'index' }
         format.json { render json: @item, status: :created, location: @item }
       else
+        flash[:error] = "Cannot create #{@item.name}."
         format.html { render action: "new" }
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
@@ -46,7 +50,10 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item = Item.find(params[:id])
+    Item.transaction do
+      @item = Item.find(params[:id])
+      @item.tags = [find_or_create_tag(params[:tag][:name])]
+    end
 
     respond_to do |format|
       if @item.update_attributes(params[:item])
@@ -68,5 +75,11 @@ class ItemsController < ApplicationController
       format.html { redirect_to items_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def find_or_create_tag(name)
+    Tag.find_by_name(name) || Tag.create(name: name) 
   end
 end

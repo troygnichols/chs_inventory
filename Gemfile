@@ -8,6 +8,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'pry-debugger'
   gem 'faker'
+  gem 'annotate'
 end
 
 group :production do

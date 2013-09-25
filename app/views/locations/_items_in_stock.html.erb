@@ -3,6 +3,7 @@
     <tr>
       <th class="name">Item</th>
       <th>Quantity</th>
+      <th>Category</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -11,6 +12,7 @@
       <tr>
         <td><%= link_to item_in_stock.name, item_in_stock.item %></td>
         <td><%= item_in_stock.quantity %></td>
+        <td><%= item_in_stock.item.tag %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_location_item_in_stock_path(@location, item_in_stock), :class => 'btn btn-mini' %>
