@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.14'
+gem 'rails', '4.0.2'
 gem 'devise'
 gem 'thin'
 
@@ -17,11 +17,11 @@ group :production do
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'therubyracer'
   gem 'less-rails'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier'
   gem 'twitter-bootstrap-rails'
 end
 
