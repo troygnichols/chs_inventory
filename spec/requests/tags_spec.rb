@@ -54,7 +54,7 @@ describe "Tag" do
 
     describe "DELETE /categories/:id" do
       it "should delete and redirect to categories index page" do
-        tag = create :tag
+        tag = create :tag, name: 'Blah'
         delete tag_path(tag)
         response.should redirect_to tags_path
         assigns(:tag).should be_destroyed

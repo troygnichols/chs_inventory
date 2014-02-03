@@ -16,10 +16,9 @@ describe User do
     user.should have(1).error_on(:password)
   end
 
-
   it "should require password and confirmation to match" do
     user = build :user, password: 'this_is_a_really_good_password', password_confirmation: 'blah blah blah'
-    user.should have(1).error_on(:password)
+    user.should have(1).error_on(:password_confirmation)
   end
 
   it "should reject passwords that are too short" do
