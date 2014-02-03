@@ -31,7 +31,7 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.new(params[:location])
+    @location = Location.new(location_params)
 
     respond_to do |format|
       if @location.save
@@ -48,7 +48,7 @@ class LocationsController < ApplicationController
     @location = Location.find(params[:id])
 
     respond_to do |format|
-      if @location.update_attributes(params[:location])
+      if @location.update_attributes(location_params)
         format.html { redirect_to action: 'index' }
         format.json { head :no_content }
       else
@@ -66,5 +66,11 @@ class LocationsController < ApplicationController
       format.html { redirect_to locations_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def location_params
+    params.require(:location).permit(:name, :description)
   end
 end

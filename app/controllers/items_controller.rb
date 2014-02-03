@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
 
   def create
     Item.transaction do
-      @item = Item.new(params[:item])
+      @item = Item.new(item_params)
       @item.tags = [find_or_create_tag(params[:tag][:name])] unless params[:tag][:name].blank?
     end
 
@@ -56,7 +56,7 @@ class ItemsController < ApplicationController
     end
 
     respond_to do |format|
-      if @item.update_attributes(params[:item])
+      if @item.update_attributes(item_params)
         flash[:success] = "Updated #{@item.name}."
         format.html { redirect_to action: 'index' }
         format.json { head :no_content }
@@ -81,5 +81,9 @@ class ItemsController < ApplicationController
 
   def find_or_create_tag(name)
     Tag.find_by_name(name) || Tag.create(name: name) 
+  end
+
+  def item_params
+    params.require(:item).permit(:name, :size, :units)
   end
 end

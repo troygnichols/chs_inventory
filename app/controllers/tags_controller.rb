@@ -16,7 +16,7 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
 
     respond_to do |format|
-      if @tag.update_attributes(params[:tag])
+      if @tag.update_attributes(tag_params)
         flash[:success] = "Updated #{@tag.name}."
         format.html { redirect_to action: 'index' }
         format.json { head :no_content }
@@ -35,5 +35,11 @@ class TagsController < ApplicationController
       format.html { redirect_to tags_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def tag_params
+    params.require(:tag).permit(:name)
   end
 end

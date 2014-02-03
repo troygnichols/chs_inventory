@@ -15,7 +15,7 @@ class ItemsInStockController < ApplicationController
   end
 
   def create
-    @item_in_stock = @location.items_in_stock.build(params[:item_in_stock])
+    @item_in_stock = @location.items_in_stock.build(item_in_stock_params)
 
     respond_to do |format|
       if @item_in_stock.save
@@ -32,7 +32,7 @@ class ItemsInStockController < ApplicationController
     @item_in_stock = @location.items_in_stock.where(id: params[:id]).first
 
     respond_to do |format|
-      if @item_in_stock.update_attributes(params[:item_in_stock])
+      if @item_in_stock.update_attributes(item_in_stock_params)
         format.html { redirect_to @location }
         format.json { head :no_content }
       else
@@ -57,5 +57,9 @@ class ItemsInStockController < ApplicationController
 
   def load_location
     @location = Location.find(params[:location_id])
+  end
+
+  def item_in_stock_params
+    params.require(:item_in_stock).permit(:item_id, :subject_id, :quantity)
   end
 end

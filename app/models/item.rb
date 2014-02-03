@@ -12,7 +12,6 @@
 
 class Item < ActiveRecord::Base
   validate :only_one_tag
-  attr_accessible :name, :size, :units
 
   DEFAULT_UNITS = %w(mL L mm inches)
 
