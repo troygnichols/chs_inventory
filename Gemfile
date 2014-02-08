@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 gem 'devise'
 gem 'thin'
+gem 'coveralls', require: false
 
 group :development, :test do
   gem 'rspec-rails'
