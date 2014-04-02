@@ -8,4 +8,4 @@ CHS Inventory
 
 =============
 
-Inventory System for schools.
+Chemical Inventory System for schools.
