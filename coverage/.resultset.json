@@ -83,16 +83,16 @@
         1,
         1,
         null,
-        1,
+        29,
         null,
         1,
         2,
         null,
         null,
         1,
-        14,
-        14,
-        14,
+        12,
+        12,
+        12,
         null,
         null,
         1,
@@ -808,6 +808,22 @@
         null,
         null
       ],
+      "/Users/ryanthames/Dropbox/Code/chs_inventory/app/models/tagged_entity.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null
+      ],
       "/Users/ryanthames/Dropbox/Code/chs_inventory/app/controllers/tags_controller.rb": [
         1,
         1,
@@ -853,22 +869,6 @@
         1,
         1,
         null,
-        null
-      ],
-      "/Users/ryanthames/Dropbox/Code/chs_inventory/app/models/tagged_entity.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        1,
-        1,
         null
       ],
       "/Users/ryanthames/Dropbox/Code/chs_inventory/app/controllers/items_controller.rb": [
@@ -963,6 +963,6 @@
         null
       ]
     },
-    "timestamp": 1398221123
+    "timestamp": 1399674443
   }
 }

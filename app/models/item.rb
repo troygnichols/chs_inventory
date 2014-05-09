@@ -20,7 +20,7 @@ class Item < ActiveRecord::Base
   has_many :tagged_entities, as: :entity
   has_many :tags, through: :tagged_entities
 
-  default_scope order(:name)
+  default_scope { order(:name) }
 
   def tag
     tags.first
