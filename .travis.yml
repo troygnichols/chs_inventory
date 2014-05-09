@@ -2,5 +2,8 @@ language: ruby
 rvm:
   - "2.0.0"
   
-# uncomment this line if your project needs to run something other than `rake`:
+before_script:
+  - psql -c 'create database chs_inventory_test;' -U postgres
+
+# uncemment this line if yeur project needs to run something other than `rake`:
 # script: bundle exec rspec spec
