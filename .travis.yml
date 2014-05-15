@@ -4,7 +4,7 @@ rvm:
   
 before_script:
   - psql -c 'create database chs_inventory_test;' -U postgres
-  - "rake db:test:prepare"
+  - "bundle exec rake db:test:prepare"
 
 # uncemment this line if yeur project needs to run something other than `rake`:
 # script: bundle exec rspec spec
