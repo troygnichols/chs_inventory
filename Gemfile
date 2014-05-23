@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.1'
+gem 'rails', '4.0.5'
 gem 'devise'
 gem 'thin'
 gem 'coveralls', require: false
@@ -35,6 +35,7 @@ end
 
 group :test do
   gem 'factory_girl_rails'
+  gem 'nokogiri'
   gem 'capybara'
   gem 'guard-rspec'
   gem 'database_cleaner'
