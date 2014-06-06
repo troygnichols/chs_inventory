@@ -4,6 +4,7 @@ gem 'rails', '4.0.5'
 gem 'devise'
 gem 'thin'
 gem 'coveralls', require: false
+gem 'capistrano', '~> 3.2.0'
 
 group :development, :test do
   gem 'rspec-rails'
