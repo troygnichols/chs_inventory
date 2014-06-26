@@ -2,20 +2,21 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.5'
 gem 'devise'
-gem 'thin'
 gem 'coveralls', require: false
 gem 'capistrano', '~> 3.2.0'
+gem 'pg'
 
 group :development, :test do
   gem 'rspec-rails'
   gem 'pry-debugger'
   gem 'faker'
   gem 'annotate'
+  gem 'thin'
 end
 
 group :production do
-    gem 'pg'
     gem 'rails_12factor', '0.0.2'
+    gem 'unicorn'
 end
 
 group :assets do

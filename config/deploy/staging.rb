@@ -15,7 +15,7 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server 'chs-inventory.com', roles: [:web], user: 'ocsoftware', my_property: :my_value
+server 'chs-inventory.com', roles: [:web], user: 'ocsoftware'
 
 
 # Custom SSH Options

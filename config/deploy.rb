@@ -15,21 +15,25 @@ set :deploy_to, '/home/rails'
 # Default value for :scm is :git
 set :scm, :git
 
-set :user, "ocsoftware"
-
 set :use_sudo, false
-
-set :rails_env, "production"
 
 set :deploy_via, :copy
 
-set :ssh_options, { :forward_agent => true, :port => 4321 } # custom port?
-
 set :keep_releases, 5
 
-default_run_options[:pty] = true
+server "www.chs-inventory.com", roles: %w{web app}, user: "ocsoftware"
 
-server "www.chs-inventory.com", :app, :web, :db, :primary => true
+namespace :deploy do
+  desc "Symlink shared config files"
+  task :symlink_config_files do
+    run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_path }/config/database.yml"
+  end
+
+  desc "Restart unicorn app"
+  task :restart do
+    run "#{ try_sudo } service unicorn restart"
+  end
+end
 
 # Default value for :format is :pretty
 # set :format, :pretty
