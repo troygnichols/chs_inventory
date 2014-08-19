@@ -14,13 +14,13 @@ describe ItemInStock do
   it "requires a quantity value" do
     stock = build :item_in_stock, quantity: nil
     stock.should_not be_valid
-    stock.should have(1).error_on(:quantity)
+    expect(stock.errors[:quantity].size).to eq(1)
   end
 
   it "must have a numeric quantity" do
     stock = build :item_in_stock, quantity: 'blah'
     stock.should_not be_valid
-    stock.should have(1).error_on(:quantity)
+    expect(stock.errors[:quantity].size).to eq(1)
   end
 
   it "should get the name from the associated item" do

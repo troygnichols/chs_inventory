@@ -6,7 +6,7 @@ gem 'coveralls', require: false
 gem 'pg'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.99.0.beta1'
+  gem 'rspec-rails'
   gem 'pry-debugger'
   gem 'faker'
   gem 'annotate'
