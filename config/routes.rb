@@ -1,5 +1,5 @@
 ChsInventory::Application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   resources :items
   resources :tags, path: 'categories', except: [:new, :show, :create]
   resources :locations do
