@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Location do
+describe Location, :type => :model do
   it "must have a name" do
     location = build :location, name: ''
     location.valid?

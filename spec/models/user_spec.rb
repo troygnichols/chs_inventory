@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User do
+describe User, :type => :model do
   it "must have an email" do
     user = build :user, email: ''
     user.valid?
@@ -42,6 +42,6 @@ describe User do
   it "should accept valid password" do
     good_pwd = 'this password is fine'
     user = build :user, password: good_pwd, password_confirmation: good_pwd
-    user.should be_valid
+    expect(user).to be_valid
   end
 end
