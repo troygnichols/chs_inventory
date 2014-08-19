@@ -7,7 +7,7 @@ gem 'pg'
 
 group :development, :test do
   gem 'rspec-rails'
-  gem 'pry-debugger'
+  gem 'pry-byebug'
   gem 'faker'
   gem 'annotate'
   gem 'thin'
@@ -32,6 +32,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'meta_request'
+  gem 'quiet_assets'
 end
 
 group :test do
