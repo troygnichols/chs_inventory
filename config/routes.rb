@@ -6,5 +6,11 @@ ChsInventory::Application.routes.draw do
     resources :items_in_stock, except: [:index, :show]
   end
 
+  resources :registration_whitelists, only: [:index, :new, :create, :destroy]
+
+  controller :admin do
+    get 'admin', action: 'index'
+  end
+
   root to: 'items#index'
 end

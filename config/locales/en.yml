@@ -3,4 +3,4 @@
 
 en:
   registration:
-    not_allowed: Oops, it doesn't look like you're allowed to register right now. Please contact an admin if you think you're supposed to be allowed.
+    not_allowed: Oops, it looks like you're not allowed to register right now. Please contact an admin if you think you're supposed to be allowed.
