@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Item do
+describe Item, :type => :model do
   it 'allows duplicate names' do
     existing_item = FactoryGirl.create :item
     new_item = FactoryGirl.build_stubbed :item, name: existing_item.name

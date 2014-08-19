@@ -2,26 +2,26 @@ require 'spec_helper'
 
 include Warden::Test::Helpers
 
-describe "Tag" do
+describe "Tag", :type => :request do
   describe "not logged in" do
     describe "GET /categories/:id/edit" do
       it "should redirect to sign_in page" do
         get edit_tag_path(1)
-        response.should deny_access
+        expect(response).to deny_access
       end
     end
 
     describe "PUT /categories/:id" do
       it "should redirect to sign_in page" do
         put tag_path(1)
-        response.should deny_access
+        expect(response).to deny_access
       end
     end
 
     describe "DELETE /categories/:id" do
       it "should redirect to sign_in page" do
         delete tag_path(1)
-        response.should deny_access
+        expect(response).to deny_access
       end
     end
   end
@@ -40,15 +40,15 @@ describe "Tag" do
     describe "GET /categories/:id/edit" do
       it "should render edit page" do
         get edit_tag_path(@tag)
-        response.should render_template 'tags/edit'
+        expect(response).to render_template 'tags/edit'
       end
     end
 
     describe "PUT /categories/:id" do
       it "should update and redirect to categories index page" do
         put tag_path(@tag), tag: { name: 'Foobar' }
-        response.should redirect_to tags_path
-        assigns(:tag).reload.name.should eq('Foobar')
+        expect(response).to redirect_to tags_path
+        expect(assigns(:tag).reload.name).to eq('Foobar')
       end
     end
 
@@ -56,8 +56,8 @@ describe "Tag" do
       it "should delete and redirect to categories index page" do
         tag = create :tag, name: 'Blah'
         delete tag_path(tag)
-        response.should redirect_to tags_path
-        assigns(:tag).should be_destroyed
+        expect(response).to redirect_to tags_path
+        expect(assigns(:tag)).to be_destroyed
       end
     end
   end

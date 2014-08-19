@@ -1,15 +1,17 @@
 require 'spec_helper'
 
-describe Location do
+describe Location, :type => :model do
   it "must have a name" do
     location = build :location, name: ''
-    location.should have(1).error_on(:name)
+    location.valid?
+    expect(location.errors[:name].size).to eq(1)
   end
 
   it "must have a unique name" do
     create :location, name: 'Secret Lab'
     location = build :location, name: 'secret lab'
-    location.should have(1).error_on(:name)
+    location.valid?
+    expect(location.errors[:name].size).to eq(1)
   end
 
   it "should destroy associated ItemsInStock" do
