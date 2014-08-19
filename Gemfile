@@ -3,11 +3,10 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.5'
 gem 'devise'
 gem 'coveralls', require: false
-gem 'capistrano', '~> 3.2.0'
 gem 'pg'
 
 group :development, :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', '~> 2.99.0.beta1'
   gem 'pry-debugger'
   gem 'faker'
   gem 'annotate'
