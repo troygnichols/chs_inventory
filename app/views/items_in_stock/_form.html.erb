@@ -1,19 +1,37 @@
-<%= form_for [@location, @item_in_stock], :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label 'Item', :class => 'control-label' %>
-    <div class="controls">
-      <%= f.select :item_id, options_from_collection_for_select(Item.all, :id, :name_and_info) %>
+<%= form_for [@location, @item_in_stock], html: { class: 'form-horizontal' } do |f| %>
+
+  <% if @item_in_stock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item_in_stock.errors.count, "error") %> prohibited this location from being saved:</h2>
+      <ul>
+      <% @item_in_stock.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :quantity, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :quantity, :class => 'number_field' %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label 'Item', class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.select :item_id, options_from_collection_for_select(Item.all, :id, :name_and_info), {},
+        class: 'form-control' %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")), location_items_in_stock_path, :class => 'btn' %>
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+  <div class="form-group">
+    <%= f.label :quantity, class: 'col-sm-2 control-label' %>
+    <div class="col-sm-10">
+      <%= f.number_field :quantity, class: 'form-control', required: true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-2 control-label"></div>
+    <div class="col-sm-10">
+      <%= f.submit nil, class: 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+        @location, class: 'btn' %>
+    </div>
   </div>
 <% end %>

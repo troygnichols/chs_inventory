@@ -1,5 +1,5 @@
 class RegistrationWhitelist < ActiveRecord::Base
-  validates :email, uniqueness: true, presence: true
+  validates :email, uniqueness: { message: 'must be unique' }, presence: true
 
   def self.add!(email)
     return if allowed?(email)

@@ -1,0 +1,56 @@
+$primary-color: #8D68CC;
+$primary-color-darker: #865ECC;
+
+/*
+ * Navbar
+ */
+.navbar {
+  border-radius: 0;
+  background-color: $primary-color;
+  border-color: $primary-color;
+
+  .navbar-brand, .navbar-nav > li > a {
+    color: #fff;
+  }
+
+  .navbar-nav > li:hover {
+    background-color: $primary-color-darker;
+  }
+}
+
+
+
+
+/*
+ * Buttons
+ */
+@mixin button-engaged {
+  background-color: $primary-color-darker;
+  border-color: $primary-color-darker;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  border-color: $primary-color-darker;
+
+  &:hover {
+    @include button-engaged
+  }
+
+  &:active {
+    @include button-engaged
+  }
+
+  &:focus {
+    @include button-engaged
+  }
+}
+
+
+
+/*
+ * Forms
+ */
+.form-horizontal {
+  max-width: 500px;
+}

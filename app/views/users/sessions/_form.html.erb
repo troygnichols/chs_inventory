@@ -1,18 +1,24 @@
-<%= form_for :user, url: '/users/sign_in', method: 'POST', :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for :user, url: '/users/sign_in', method: 'post' do |f| %>
   <div class="control-group">
-    <%= f.label :email, 'Email', :class => 'control-label' %>
+    <label class="control-label" for="user-email">Email</label>
     <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
+      <%= f.email_field :email, id: 'user-email', class: 'input-lg',
+        required: true, autofocus: true %>
     </div>
   </div>
+
   <div class="control-group">
-    <%= f.label :password, 'Password', :class => 'control-label' %>
+    <label class="control-label" for="user-password">Password</label>
     <div class="controls">
-        <%= f.password_field :password, :class => 'password' %>
+      <%= f.password_field :password, id: 'user-password', class: 'input-lg',
+        required: true %>
     </div>
   </div>
-  <div class="form-actions">
-    <%= f.submit 'Sign In', :class => 'btn btn-primary' %>
+
+  <center>
+    <br/>
+    <%= f.submit 'Sign In', class: 'btn btn-lg btn-primary' %>
     or <%= link_to 'Register a new account', new_user_registration_path %>
-  </div>
+  </center>
+
 <% end %>

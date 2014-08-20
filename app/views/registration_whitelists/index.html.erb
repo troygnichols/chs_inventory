@@ -1,7 +1,13 @@
-<h1>Allowed users</h1>
+<center>
+<div class="page-header">
+  <h1>Allowed users</h1>
+  <div class="well allowed-users-summary">
+    This is a list of people who will be allowed to <strong>register</strong> (i.e. create an account) and login to the system with their own email and password.  <em>This is not a list of current users</em>.  Removing a user from this list will not remove them from the system.
+  </div>
+</div>
 
 <% if @registration_whitelists.any? %>
-  <table class="table table-list">
+  <table class="table table-list allowed-users-list">
     <thead>
       <tr>
         <th>Email</th>
@@ -22,4 +28,5 @@
 <% end %>
 <br>
 
-<%= link_to 'Add another user', new_registration_whitelist_path, class: 'btn' %>
+<%= link_to 'Add another user', new_registration_whitelist_path, class: 'btn btn-primary' %>
+</center>

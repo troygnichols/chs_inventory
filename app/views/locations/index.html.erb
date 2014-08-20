@@ -1,27 +1,31 @@
 <h1>Locations</h1>
 
 <table class="locations table table-striped">
-  <tr>
-    <th class="name">Name</th>
-    <th class="desc">Description</th>
-    <th>Actions</th>
-  </tr>
+  <thead>
+    <tr>
+      <th class="name">Name</th>
+      <th class="desc">Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
 
-<% @locations.each do |location| %>
-  <tr>
-    <td><%= link_to location.name, location %></td>
-    <td><%= truncate location.description %>
-    <td>
-      <%= link_to t('.edit', :default => t("helpers.links.edit")),
-        edit_location_path(location), :class => 'btn btn-mini' %>
-      <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-          location_path(location),
-          :method => :delete,
-          :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-          :class => 'btn btn-mini btn-danger' %>
-    </td>
-  </tr>
-<% end %>
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= link_to location.name, location %></td>
+        <td><%= truncate location.description %>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+            edit_location_path(location), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              location_path(location),
+              :method => :delete,
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <br />

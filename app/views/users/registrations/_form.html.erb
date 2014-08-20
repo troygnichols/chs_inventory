@@ -1,27 +1,33 @@
-<%= form_for :user, url: user_registration_path, method: 'POST', :html => { :class => 'form-horizontal' } do |f| %>
+<%= errors(resource, "Whoops! Registration didn't work because:") %>
 
+<%= form_for :user, url: user_registration_path, method: 'post' do |f| %>
   <div class="control-group">
-    <%= f.label :email, 'Email', :class => 'control-label' %>
+    <label class="control-label" for="user-email">Email</label>
     <div class="controls">
-      <%= f.text_field :email, :class => 'text_field' %>
+      <%= f.email_field :email, id: 'user-email', class: 'input-lg',
+        required: true, autofocus: true %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :password, 'Password', :class => 'control-label' %>
+    <label class="control-label" for="user-password"></label>
     <div class="controls">
-        <%= f.password_field :password, :class => 'password' %>
+      <%= f.password_field :password, id: 'user-password', class: 'input-lg',
+        required: true %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :password, 'Confirm password', :class => 'control-label' %>
+    <label class="control-label" for="user-password-confirmation">Confirm password</label>
     <div class="controls">
-        <%= f.password_field :password_confirmation, :class => 'password' %>
+      <%= f.password_field :password_confirmation, id: 'user-password-confirmation',
+        class: 'input-lg', required: true %>
     </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.submit 'Register', :class => 'btn btn-primary' %>
-  </div>
+  <center>
+    <br/>
+    <%= f.submit 'Register', class: 'btn btn-lg btn-primary' %>
+    <%= link_to 'Cancel', root_path %>
+  </center>
 <% end %>

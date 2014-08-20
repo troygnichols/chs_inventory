@@ -1,0 +1,9 @@
+.user-register {
+  margin: 0 auto;
+  width: 30%;
+  min-width: 290px;
+
+  input[type=email], input[type=password] {
+    width: 100%;
+  }
+}

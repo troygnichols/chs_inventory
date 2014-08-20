@@ -24,7 +24,6 @@ group :assets do
   gem 'therubyracer'
   gem 'less-rails'
   gem 'uglifier'
-  gem 'twitter-bootstrap-rails'
 end
 
 group :development do

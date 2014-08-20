@@ -14,7 +14,8 @@ class RegistrationWhitelistsController < ApplicationController
     @registration_whitelist = RegistrationWhitelist.new(registration_whitelist_params)
 
     if @registration_whitelist.save
-      redirect_to action: :index, notice: 'Updated allowed users list.'
+      flash.notice = 'Updated allowed users list.'
+      redirect_to action: :index
     else
       render action: 'new'
     end

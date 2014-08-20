@@ -1,3 +1,17 @@
 // Place all the styles related to the registration_whitelists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#registration_whitelist_email {
+  max-width: 30% !important;
+  min-width: 285px;
+}
+
+.allowed-users-summary {
+  max-width: 500px;
+  text-align: left;
+}
+
+.allowed-users-list {
+  max-width: 600px;
+}

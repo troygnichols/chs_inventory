@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
   def create
     Item.transaction do
       @item = Item.new(item_params)
-      @item.tags = [find_or_create_tag(params[:tag][:name])] unless params[:tag][:name].blank?
+      @item.tags = [find_or_create_tag(params[:tag][:name])] if params[:tag][:name].present?
     end
 
     respond_to do |format|
@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
   def update
     Item.transaction do
       @item = Item.find(params[:id])
-      @item.tags = [find_or_create_tag(params[:tag][:name])]
+      @item.tags = [find_or_create_tag(params[:tag][:name])] if params[:tag][:name].present?
     end
 
     respond_to do |format|
@@ -80,7 +80,7 @@ class ItemsController < ApplicationController
   private
 
   def find_or_create_tag(name)
-    Tag.find_by_name(name) || Tag.create(name: name) 
+    Tag.find_by_name(name) || Tag.create(name: name)
   end
 
   def item_params

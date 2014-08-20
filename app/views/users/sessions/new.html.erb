@@ -1,4 +1,10 @@
-<div class="page-header">
-    <h1>Sign In</h1>
+<div class="user-sign-in">
+  <div class="page-header">
+    <h1>Welcome!</h1>
+    <small>If you already have an acccount, please sign in below, or you can
+      <%= link_to 'register here', new_user_registration_path %>.
+    </small>
+  </div>
+
+  <%= render 'form' %>
 </div>
-<%= render :partial => 'form' %>
