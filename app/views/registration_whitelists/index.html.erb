@@ -1,0 +1,25 @@
+<h1>Allowed users</h1>
+
+<% if @registration_whitelists.any? %>
+  <table class="table table-list">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="registration-whitelists">
+      <% @registration_whitelists.each do |allowed| %>
+        <tr>
+          <td><%= allowed.email %></td>
+          <td><%= link_to 'Remove', allowed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  This list is currently empty
+<% end %>
+<br>
+
+<%= link_to 'Add another user', new_registration_whitelist_path, class: 'btn' %>

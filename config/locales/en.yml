@@ -2,4 +2,5 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  registration:
+    not_allowed: Oops, it looks like you're not allowed to register right now. Please contact an admin if you think you're supposed to be allowed.
