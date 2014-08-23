@@ -40,14 +40,23 @@ describe "registration", type: :request do
   end
 
   describe "when email is not in whitelist" do
-    it "rejects registration" do
+    it "rejects registration request" do
       post user_registration_path, user: {
         email: @email,
         password: 'validpass',
         password_confirmation: 'validpass'
       }
-      expect(response.status).to eq(200)
-      expect(response).to render_template("users/registrations/new")
+      expect(response).to redirect_to new_user_registration_url
+    end
+
+    it "does not create a user" do
+      expect {
+        post user_registration_path, user: {
+          email: @email,
+          password: 'validpass',
+          password_confirmation: 'validpass'
+        }
+      }.not_to change { User.count }
     end
   end
 end
