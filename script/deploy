@@ -1,0 +1,41 @@
+#!/bin/bash
+
+STAGING_REMOTE=chs-staging
+PRODUCTION_REMOTE=chs-production
+
+GIT_PUSH_OPTIONS=""
+GIT_CURRENT_REV=`git rev-parse --abbrev-ref HEAD`
+GIT_REMOTE_TARGET_BRANCH=master
+
+function show_help () {
+  cat << EOF
+Usage: ${0##*/} [TARGET]
+
+  TARGET:
+
+    The place you want to deploy to.  Valid targets are 'staging' or 'production'.
+    This argument is optional.  If you don't provide a target, we are going to
+    deploy to staging by default.
+EOF
+}
+
+if [ "$1" == "-h" ] || [ "$1" == "--help" ]; then
+  show_help
+  exit 0
+fi
+
+if [ "$1" == "staging" ] || [ -z "$1" ]; then
+  TARGET=$STAGING_REMOTE
+  GIT_PUSH_OPTIONS="--force"
+elif [ "$1" == "production" ]; then
+  TARGET=$PRODUCTION_REMOTE
+else
+  echo "Unknown deployment target: $1"
+  exit 1
+fi
+
+echo "Deploying $GIT_CURRENT_REV to $TARGET"
+GIT_COMMAND="git push $GIT_PUSH_OPTIONS $TARGET $GIT_CURRENT_REV:$GIT_REMOTE_TARGET_BRANCH"
+
+echo "Running: $GIT_COMMAND"
+`$GIT_COMMAND`
