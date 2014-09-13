@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby ENV['CUSTOM_RUBY_VERSION'] || '2.1.2'
 
-gem 'rails', '4.0.5'
+gem 'rails', '4.0.10'
 gem 'devise'
 gem 'coveralls', require: false
 gem 'pg'
