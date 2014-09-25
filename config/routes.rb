@@ -12,5 +12,7 @@ ChsInventory::Application.routes.draw do
     get 'admin', action: 'index'
   end
 
+  get 'datatables/:action', controller: 'datatables'
+
   root to: 'items#index'
 end

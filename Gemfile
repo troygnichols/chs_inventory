@@ -6,6 +6,7 @@ gem 'rails', '4.0.10'
 gem 'devise'
 gem 'coveralls', require: false
 gem 'pg'
+gem 'kaminari'
 
 group :development, :test do
   gem 'rspec-rails'
