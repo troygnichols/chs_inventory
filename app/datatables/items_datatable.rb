@@ -3,7 +3,7 @@ class ItemsDatatable < Datatable
     {
       draw: params[:draw].to_i,
       recordsTotal: Item.count,
-      recordsFiltered: items.count,
+      recordsFiltered: items.total_count,
       data: data
     }
   end
@@ -17,19 +17,12 @@ class ItemsDatatable < Datatable
   end
 
   def items
-    @items ||= Item.select(:name, :size, :units).includes(:tags)
-      .page(page).per(per_page)
+    @items ||= filter(Item.select(:name, :size, :units)
+                      .includes(:tags)).page(page).per(per_page)
   end
 
-  def page
-    params[:iDisplayStart].to_i/per_page + 1
-  end
-
-  def per_page
-    params[:iDisplayLength].to_i > 0 ? params[:iDisplayLength].to_i : 10
-  end
-
-  def sort_direction
-    params[:sSortDir_0] == "desc" ? "desc" : "asc"
+  def filter(query)
+    return query unless params[:search]
+    query.where('name like ?', "%#{params[:search][:value]}%")
   end
 end
